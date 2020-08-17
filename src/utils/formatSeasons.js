@@ -1,10 +1,10 @@
 export const formatSeasons = (allEpisodes) => {
   const seasons = {};
-  allEpisodes.forEach((e) => {
-    if (!seasons.hasOwnProperty(`Season ${e.season}`)) {
-      seasons[`Season ${e.season}`] = [];
+  allEpisodes.forEach((episode) => {
+    if (!(`Season ${episode.season}` in seasons)) {
+      seasons[`Season ${episode.season}`] = [];
     }
-    seasons[`Season ${e.season}`].push(e);
+    seasons[`Season ${episode.season}`].push(episode);
   });
   return seasons;
 };
