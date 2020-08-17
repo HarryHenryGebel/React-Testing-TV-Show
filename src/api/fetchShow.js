@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { formatSeasons } from "../utils/formatSeasons";
+import formatSeasons from "../utils/formatSeasons";
 
 export default function fetchShow(setShow, setSeasons) {
   axios
@@ -14,4 +14,4 @@ export default function fetchShow(setShow, setSeasons) {
     });
 }
 
-//  LocalWords:  formatSeasons
+//  LocalWords:  formatSeasons singlesearch
