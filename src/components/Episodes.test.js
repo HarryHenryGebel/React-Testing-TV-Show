@@ -1,9 +1,9 @@
 import React from "react";
-import App from "./App";
+import App from "../App";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import mockFetchShow from "./api/fetchShow";
+import mockFetchShow from "../api/fetchShow";
 
 const mockData = {
   data: {
@@ -85,12 +85,15 @@ const mockData = {
   },
 };
 
-jest.mock("./api/fetchShow");
+jest.mock("../api/fetchShow");
 
-test("App renders without errors", async () => {
+test("Dropdown renders without errors", async () => {
   mockFetchShow.mockResolvedValueOnce(mockData);
   const { getByText, getAllByText } = render(<App />);
   await waitFor(() => {
     getByText("Select a season");
   });
+  userEvent.click(getByText("Select a season"));
+  expect(getAllByText("Season 1")).toHaveLength(1);
+  expect(mockFetchShow).toHaveBeenCalledTimes(1);
 });
